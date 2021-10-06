@@ -9,24 +9,20 @@ console.log(contenedorCarrito)
 
 const carrito = []
 
-const mostrarProductos = (array) => {
-    contenedorProductos.innerHTML = ''
+contenedorProductos.innerHTML = ''
     
-    array.forEach( (producto) => {
-        const div = document.createElement('div')
-        div.classList.add('productos__item')
-        div.innerHTML = `
+stockProductos.forEach( (prod) => {
+    const div = document.createElement('div')
+    div.classList.add('productos__item')
+    div.innerHTML = `
                     
-                    <h3>${producto.nombre}</h3>
-                    <img src=${producto.linkImagen} alt="">
-                    <p class="precioProducto">Precio: $${producto.precio}</p>
-                    <button onclick="agregarAlCarrito(${producto.id})" class="boton-agregar">+Agregar al carrito</button>
-        `
-        contenedorProductos.appendChild(div)
-    } )
-}
-
-mostrarProductos(stockProductos)
+                <h3>${prod.nombre}</h3>
+                <img class="productos__img" src=${prod.img} alt="">
+                <p class="precioProducto">Precio: $${prod.precio}</p>
+                <button onclick="agregarAlCarrito(${prod.id})" class="productos__btn">+Agregar al carrito</button>
+    `
+    contenedorProductos.appendChild(div)
+} )
 
 // === AGREGAR AL CARRITO ===
 
@@ -66,7 +62,6 @@ const actualizarCarrito = () => {
         div.innerHTML = `
                 <p>${prod.nombre}</p>
                 <p>Precio: $${prod.precio}</p>
-                <p>Cantidad: ${prod.cantidad}</p>
                 <button onclick="eliminarProducto(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
              `
 
@@ -76,3 +71,5 @@ const actualizarCarrito = () => {
     // contadorCarrito.innerText = carrito.reduce((acc, prod) => acc += prod.cantidad, 0)
     // precioTotal.innerText = carrito.reduce((acc, prod) => acc += prod.precio * prod.cantidad, 0)
 }
+
+
