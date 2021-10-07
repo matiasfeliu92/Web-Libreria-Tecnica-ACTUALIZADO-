@@ -1,3 +1,27 @@
+const contenedorModal = document.getElementsByClassName('modal-contenedor')[0]
+const botonAbrir = document.getElementById('boton-carrito')
+const botonCerrar = document.getElementById('carritoCerrar')
+const modalCarrito = document.getElementsByClassName('modal-carrito')[0]
+
+botonAbrir.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+botonCerrar.addEventListener('click', ()=>{
+    contenedorModal.classList.toggle('modal-active')
+})
+contenedorModal.addEventListener('click', ()=>{
+    botonCerrar.click()
+})
+modalCarrito.addEventListener('click', (event)=>{
+    event.stopPropagation()
+})
+
+
+// contenedorModal.addEventListener('transitionend', ()=>{
+//     console.log('termino la transicion del modal')
+// })
+
+
 // == selectores ==
 const contenedorProductos = document.getElementById('contenedor-productos')
 const contenedorCarrito = document.getElementById('carrito-contenedor')
@@ -96,50 +120,50 @@ const eliminarProducto = (itemId) => {
 
 // == FILTROS == 
 
-const selectFiltro = document.getElementById('talles')
-const selectPrecios = document.getElementById('precios')
+// const selectFiltro = document.getElementById('talles')
+// const selectPrecios = document.getElementById('precios')
 
 
-const filtrar = () => {
-    let valorFiltroTalles = selectFiltro.value
-    let valorFiltroPrecios = selectPrecios.value
+// const filtrar = () => {
+//     let valorFiltroTalles = selectFiltro.value
+//     let valorFiltroPrecios = selectPrecios.value
 
-    let arrayFiltrado = []
+//     let arrayFiltrado = []
 
-    if (valorFiltroTalles == 'all') {
-        arrayFiltrado = stockProductos
-    } else {
-        arrayFiltrado = stockProductos.filter(el => el.talle == selectFiltro.value)
-    }
+//     if (valorFiltroTalles == 'all') {
+//         arrayFiltrado = stockProductos
+//     } else {
+//         arrayFiltrado = stockProductos.filter(el => el.talle == selectFiltro.value)
+//     }
 
-    if (valorFiltroPrecios == 1) {
-        arrayFiltrado = arrayFiltrado.filter(el => el.precio <= 5000)
-    } else if (valorFiltroPrecios == 2) {
-        arrayFiltrado = arrayFiltrado.filter(el => el.precio >= 5000)
-    }
+//     if (valorFiltroPrecios == 1) {
+//         arrayFiltrado = arrayFiltrado.filter(el => el.precio <= 5000)
+//     } else if (valorFiltroPrecios == 2) {
+//         arrayFiltrado = arrayFiltrado.filter(el => el.precio >= 5000)
+//     }
 
-    mostrarProductos(arrayFiltrado)
+//     mostrarProductos(arrayFiltrado)
 
-}
+// }
 
-selectFiltro.addEventListener('change', () => {
-    filtrar()
-})
-selectPrecios.addEventListener('change', () => {
-    filtrar()
-})
-
-
-// === buscador ===
-
-const buscador = document.getElementById('buscador')
-
-const buscar = (search) => {
-    return stockProductos.filter((prod) => prod.nombre.toLowerCase().includes(search))
-}
+// selectFiltro.addEventListener('change', () => {
+//     filtrar()
+// })
+// selectPrecios.addEventListener('change', () => {
+//     filtrar()
+// })
 
 
-buscador.addEventListener('input', () => {
-    const search = buscador.value.trim().toLowerCase()
-    mostrarProductos(buscar(search))
-})
+// // === buscador ===
+
+// const buscador = document.getElementById('buscador')
+
+// const buscar = (search) => {
+//     return stockProductos.filter((prod) => prod.nombre.toLowerCase().includes(search))
+// }
+
+
+// buscador.addEventListener('input', () => {
+//     const search = buscador.value.trim().toLowerCase()
+//     mostrarProductos(buscar(search))
+// })
