@@ -40,9 +40,9 @@ p {
 }
 
 img {
-    width: 80%;
-    height: auto;
-    border-radius: 20px;
+    width: 70%;
+    margin-bottom: 10px;
+    border-radius: 30px;
 }
 
 header {
@@ -101,7 +101,7 @@ p {
 
 .producto {
     width: 30%;
-    height: 70vh;
+    height: 80vh;
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
