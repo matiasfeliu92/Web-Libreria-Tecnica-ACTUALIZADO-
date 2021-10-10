@@ -31,26 +31,24 @@ const precioTotal = document.getElementById('precioTotal')
 
 const carrito = []    
 
+stockProductos.forEach((producto) => {
+    const div = document.createElement('div')
+    div.classList.add('producto')
+    div.innerHTML = `
+                <h3>${producto.nombre}</h3>
+                <img src=${producto.img} alt="">
+                <p class="precioProducto">Precio: $${producto.precio}</p>
+                <button onclick="agregarAlCarrito(${producto.id})" class="boton-agregar">Agregar al carrito <i class="fas fa-shopping-cart"></i></button>
+    `
 
+    contenedorProductos.appendChild(div)
+})
 
-const mostrarProductos = (stockProductos) => {
-    contenedorProductos.innerHTML = ''
+const productosToString = JSON.stringify(stockProductos)
 
-    stockProductos.forEach((producto) => {
-        const div = document.createElement('div')
-        div.classList.add('producto')
-        div.innerHTML = `
-                    <h3>${producto.nombre}</h3>
-                    <img src=${producto.img} alt="">
-                    <p class="precioProducto">Precio: $${producto.precio}</p>
-                    <button onclick="agregarAlCarrito(${producto.id})" class="boton-agregar">Agregar al carrito <i class="fas fa-shopping-cart"></i></button>
-        `
+localStorage.setItem('productos', productosToString)
 
-        contenedorProductos.appendChild(div)
-    })
-}
-
-mostrarProductos(stockProductos)
+console.log(stockProductos)
 
 
 // === AGREGAR AL CARRITO ===
